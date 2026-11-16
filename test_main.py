@@ -78,21 +78,3 @@ def test_price_setter_negative(capsys):
     assert p.price == 210000.0
     captured = capsys.readouterr()
     assert "Цена не должна быть нулевая или отрицательная" in captured.out
-
-def test_product_str():
-    p = Product("Iphone 15", "512GB, Gray space", 210000.0, 8)
-    assert str(p) == "Iphone 15, 210000.0 руб. Остаток: 8 шт."
-
-
-def test_category_str():
-    p1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
-    p2 = Product("Iphone 15", "512GB, Gray space", 210000.0, 8)
-    p3 = Product("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 14)
-    c = Category("Смартфоны", "Описание", [p1, p2, p3])
-    assert str(c) == "Смартфоны, количество продуктов: 27 шт."
-
-
-def test_product_add():
-    p1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
-    p2 = Product("Iphone 15", "512GB, Gray space", 210000.0, 8)
-    assert p1 + p2 == 2580000.0

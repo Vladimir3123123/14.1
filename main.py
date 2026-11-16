@@ -29,12 +29,6 @@ class Product:
         else:
             self.__price = value
 
-    def __str__(self):
-        return f'{self.name}, {self.price} руб. Остаток: {self.quantity} шт.'
-
-    def __add__(self, other):
-        return self.price * self.quantity + other.price * other.quantity
-
 
 class Category:
     name: str
@@ -54,10 +48,6 @@ class Category:
     def add_product(self, product):
         self.__products.append(product)
         Category.product_count += 1
-
-    def __str__(self):
-        total = sum(product.quantity for product in self.__products)
-        return f'{self.name}, количество продуктов: {total} шт.'
 
     @property
     def products(self):
@@ -95,6 +85,3 @@ if __name__ == "__main__":  # pragma: no cover
     print(product3.description)
     print(product3.price)
     print(product3.quantity)
-
-    print(category1)
-    print(product1)
